@@ -13,10 +13,10 @@
         "onCommand:copyright.injectAllFiles",
         "onCommand:copyright.currentFile"
     ],
-    "icon": "images/icon.png",
+    "icon": "images/cicon.png",
     "galleryBanner": {
-        "color": "#000",
-        "theme": "dark"
+        "color": "#fff",
+        "theme": "light"
     },
     "homepage": "https://github.com/Shobhit1/copyright_injector/blob/master/README.md",
     "bugs": {
