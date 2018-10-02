@@ -38,13 +38,13 @@
                 },
                 "copyrightInfo.ignore": {
                     "type": "string",
-                    "default": "node_modules,bin,coverage,tests,sarif,*.tsx,.vscode,public,config",
-                    "description": "A comma-delimited string of tokens to ignore in file paths. Files with these tokens in their paths will not be processed."
+                    "default": "node_modules,bin",
+                    "description": "A comma-delimited string of tokens to ignore in file paths."
                 },
                 "copyrightInfo.matchPattern": {
                     "type": "string",
                     "default": "**/*",
-                    "description": "A comma-delimited string of tokens to ignore in file paths. Files with these tokens in their paths will not be processed."
+                    "description": "A pattern to find all files. Defaults to '**/* which is equivalent to all files'"
                 }
             }
         }
