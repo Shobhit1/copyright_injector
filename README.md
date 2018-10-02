@@ -1,5 +1,7 @@
 # copyright-injector README
 
+[![Build Status](https://travis-ci.org/Shobhit1/copyright_injector.svg?branch=master)](https://travis-ci.org/Shobhit1/copyright_injector)
+
 This is a simple extension based on [license-injector](https://github.com/martellaj/license-injector) which seems to be not active.
 
 Right now it only suppports adding a copyright text on top of following files:
