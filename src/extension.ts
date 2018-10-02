@@ -10,6 +10,10 @@ export function activate(context: vscode.ExtensionContext) {
     console.log('Congratulations, your extension "copyright-injector" is now active!');
 
     let disposableInjectInAll = vscode.commands.registerCommand('copyright.injectAllFiles', () => {
+
+        vscode.window.showInformationMessage(
+            'Doing its magic. Please be patient for large projects.'
+        );
         // Get target files, taking filepaths to ignore into account.
         getAllFiles().then(function (targetFiles: any) {
             for (var i = 0; i < targetFiles.length; i++) {
@@ -62,7 +66,7 @@ const getAllFiles = () => {
 
     const matchFilesPattern: string | undefined = vscode.workspace.getConfiguration('copyrightInfo').get('matchPattern') || '/*.txt';
     let folderToBeIgnored = (ignoreConfig || "").split(',').map((term: string) => term.trim());
-    console.log(folderToBeIgnored);
+
     if (folderToBeIgnored.length === 1 && folderToBeIgnored[0] === '') {
         folderToBeIgnored = [];
     }
@@ -86,7 +90,6 @@ const addHeaderCopyright = (fileInfo: any) => {
             const companyInformation: any  = vscode.workspace.getConfiguration('copyrightInfo').get('company');
             const copyrightText = getText(companyInformation, languageId);
 
-            console.log(copyrightText);
             if (!copyrightText) {
                 return;
             }
@@ -99,9 +102,9 @@ const addHeaderCopyright = (fileInfo: any) => {
                 var fd = fs.openSync(truePath, 'w+');
                 var buffer = new Buffer(copyrightText + data);
                 fs.writeSync(fd, buffer, 0, buffer.length);
-                fs.close(fd, (e) => { console.warn('close', e); });
+                fs.close(fd, (e) => { console.warn('close the file', e); });
             } catch (error) {
-                console.log('================', error);
+                console.log('catch filesystem api error', error);
             }
 
         }

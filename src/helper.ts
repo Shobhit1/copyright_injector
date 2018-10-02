@@ -2,6 +2,7 @@ const templateObject: { [key: string]: string; }  = {
     'javascript': '// Copyright (c) $company. All rights reserved.\n// Licensed under the MIT license.\n\n',
     'html': '<!-- Copyright (c) $company. All rights reserved.\nLicensed under the MIT license. -->\n\n',
     'typescript': '// Copyright (c) $company. All rights reserved.\n// Licensed under the MIT license.\n\n',
+    'typescriptreact': '// Copyright (c) $company. All rights reserved.\n// Licensed under the MIT license.\n\n',
     'plaintext': '// Copyright (c) $company. All rights reserved.\n// Licensed under the MIT license.\n\n',
 };
 
