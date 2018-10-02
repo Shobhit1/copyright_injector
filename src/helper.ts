@@ -3,14 +3,10 @@ const templateObject: { [key: string]: string; }  = {
     'html': '<!-- Copyright (c) $company. All rights reserved.\nLicensed under the MIT license. -->\n\n',
     'typescript': '// Copyright (c) $company. All rights reserved.\n// Licensed under the MIT license.\n\n',
     'typescriptreact': '// Copyright (c) $company. All rights reserved.\n// Licensed under the MIT license.\n\n',
-    'plaintext': '// Copyright (c) $company. All rights reserved.\n// Licensed under the MIT license.\n\n',
 };
 
-// @name isTargetFile
-// @desc Filter function to remove files that user wants to ignore.
-// @param ignoreTokens An array of strings to ignore in filepaths.
 export const isTargetFile = (ignoreTokens: any) => {
-    return function(file: any) {
+    return (file: any) => {
         if (ignoreTokens.length === 0) {
             return true;
         }

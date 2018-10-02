@@ -7,7 +7,8 @@ Right now it only suppports adding a copyright text on top of following files:
 - html
 - js
 - jsx
-- txt
+- ts
+- tsx
 
 ## Features
 
