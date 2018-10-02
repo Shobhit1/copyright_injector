@@ -8,13 +8,25 @@
     "engines": {
         "vscode": "^1.27.0"
     },
-    "categories": [
-        "Other"
-    ],
+    "categories": ["Formatters", "Other"],
     "activationEvents": [
         "onCommand:copyright.injectAllFiles",
         "onCommand:copyright.currentFile"
     ],
+    "icon": "images/icon.png",
+    "galleryBanner": {
+        "color": "#000",
+        "theme": "dark"
+    },
+    "homepage": "https://github.com/Shobhit1/copyright_injector/blob/master/README.md",
+    "bugs": {
+        "url": "https://github.com/Shobhit1/copyright_injector/issues",
+        "email": "shobhit657@gmail.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Shobhit1/copyright_injector.git"
+    },
     "main": "./out/extension",
     "contributes": {
         "commands": [

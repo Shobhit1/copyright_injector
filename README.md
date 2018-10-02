@@ -27,15 +27,37 @@ For example if there is an image subfolder under your extension project workspac
 
 This extension contributes the following settings:
 
-* `copyrightInfo.company`: add the name of the company that will be injected in the copyright template. Can put your name in it as well.
-* `copyrightInfo.ignore`: A comma-delimited string of folders to ignore in file paths.
-* `copyrightInfo.matchPattern`: A pattern to find all files. Defaults to '**/* which is equivalent to all files
+- `copyrightInfo.company`: add the name of the company that will be injected in the copyright template. Can put your name in it as well.
+- `copyrightInfo.ignore`: A comma-delimited string of folders to ignore in file paths.
+- `copyrightInfo.matchPattern`: A pattern to find all files. Defaults to '\*_/_ which is equivalent to all files
 
-## Known Issues
+## Usage
 
+### Inject Current file
+
+Steps:
+
+- Ctrl/Cmd + shift + P or F1
+- Select, Copyright Injector: Inject in current file
+- Save file
+
+Please make sure that you have proper configurations entered in the workspace/user settings for this to work. Otherwise the extension will take default values.
+
+### Inject All files
+
+Steps:
+
+- Ctrl/Cmd + shift + P or F1
+- Select, Copyright Injector: Inject in all files
+
+Please make sure that you have proper configurations entered in the workspace/user settings for this to work. Otherwise the extension will take default values.
+
+## Issues and Enhancements
+
+Please use [GitHub](https://github.com/Shobhit1/copyright_injector) to report issues and also to request enhancements.
 
 ## Release Notes
 
-### 1.0.0
+### 0.0.1
 
 Initial release.
