@@ -1,71 +1,71 @@
 {
-  "name": "copyright-injector",
-  "displayName": "Copyright Injector",
-  "description": "Injects copyright information on all files. JS and TS",
-  "version": "0.0.1",
-  "publisher": "shobhit1",
-  "license": "MIT",
-  "engines": {
-    "vscode": "^1.27.0"
-  },
-  "categories": [
-    "Other"
-  ],
-  "activationEvents": [
-    "onCommand:copyright.sayHello",
-    "onCommand:copyright.allFiles",
-    "onCommand:copyright.currentFile"
-  ],
-  "main": "./out/extension",
-  "contributes": {
-    "commands": [
-      {
-        "command": "copyright.sayHello",
-        "title": "Hello World"
-      },
-      {
-        "command": "copyright.injectAllFiles",
-        "title": "Copyright Injector: Inject in all files"
-      },
-      {
-        "command": "copyright.currentFile",
-        "title": "Copyright Injector: Inject in current file"
-      }
-    ]
-  },
-  "configuration": {
-    "title": "Injector Configuration",
-    "type": "object",
-    "properties": {
-      "copyrightInfo.company": {
-        "type": "string",
-        "default": "Microsoft Corporation",
-        "description": "The organization the copyright belongs to."
-      },
-      "copyrightInfo.ignore": {
-        "type": "string",
-        "default": "node_modules,bin",
-        "description": "A comma-delimited string of tokens to ignore in file paths. Files with these tokens in their paths will not be processed."
-      },
-      "copyrightInfo.text": {
-          "type": "string",
-          "default": "'// Copyright (c) ${company}. All rights reserved.${nl}// Licensed under the MIT License.'",
-          "description": "Default copyright text to put in your files"
-      }
+    "name": "copyright-injector",
+    "displayName": "Copyright Injector",
+    "description": "Injects copyright information on all files. JS and TS",
+    "version": "0.0.1",
+    "publisher": "shobhit1",
+    "license": "MIT",
+    "engines": {
+        "vscode": "^1.27.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:copyright.injectAllFiles",
+        "onCommand:copyright.currentFile"
+    ],
+    "main": "./out/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "copyright.injectAllFiles",
+                "title": "Copyright Injector: Inject in all files"
+            },
+            {
+                "command": "copyright.currentFile",
+                "title": "Copyright Injector: Inject in current file"
+            }
+        ],
+        "configuration": {
+            "title": "Injector Configuration",
+            "type": "object",
+            "properties": {
+                "copyrightInfo.company": {
+                    "type": "string",
+                    "default": "Microsoft Corporation",
+                    "description": "The organization the copyright belongs to."
+                },
+                "copyrightInfo.ignore": {
+                    "type": "string",
+                    "default": "node_modules,bin,coverage,tests,sarif,*.tsx,.vscode",
+                    "description": "A comma-delimited string of tokens to ignore in file paths. Files with these tokens in their paths will not be processed."
+                },
+                "copyrightInfo.matchPattern": {
+                    "type": "string",
+                    "default": "**/*",
+                    "description": "A comma-delimited string of tokens to ignore in file paths. Files with these tokens in their paths will not be processed."
+                },
+                "copyrightInfo.text": {
+                    "type": "string",
+                    "default": "// Copyright (c) $company. All rights reserved.\n// Licensed under the MIT license.\n\n",
+                    "description": "Default copyright text to put in your files"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "npm run compile && node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.6.1",
+        "vscode": "^1.1.21",
+        "tslint": "^5.8.0",
+        "@types/node": "^8.10.25",
+        "@types/mocha": "^2.2.42"
     }
-  },
-  "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "postinstall": "node ./node_modules/vscode/bin/install",
-    "test": "npm run compile && node ./node_modules/vscode/bin/test"
-  },
-  "devDependencies": {
-    "typescript": "^2.6.1",
-    "vscode": "^1.1.21",
-    "tslint": "^5.8.0",
-    "@types/node": "^8.10.25",
-    "@types/mocha": "^2.2.42"
-  }
 }

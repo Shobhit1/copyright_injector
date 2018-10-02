@@ -1,44 +1,103 @@
 'use strict';
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import * as fs from 'fs';
+import { getText, isTargetFile } from './helper';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 
-    // Use the console to output diagnostic information (console.log) and errors (console.error)
-    // This line of code will only be executed once when your extension is activated
     console.log('Congratulations, your extension "copyright-injector" is now active!');
 
-    // The command has been defined in the package.json file
-    // Now provide the implementation of the command with  registerCommand
-    // The commandId parameter must match the command field in package.json
-    let disposable = vscode.commands.registerCommand('extension.sayHello', () => {
-        // The code you place here will be executed every time your command is executed
-
-        // Display a message box to the user
-        vscode.window.showInformationMessage('Hello World!');
-    });
-
+    // get information on what to insert
+    const companyInformation: any  = vscode.workspace.getConfiguration('copyrightInfo').get('company');
+    const copyrightTextTemplate: any = vscode.workspace.getConfiguration('copyrightInfo').get('text');
+    const copyrightText = getText(companyInformation, copyrightTextTemplate);
 
     let disposableInjectInAll = vscode.commands.registerCommand('copyright.injectAllFiles', () => {
-        // Display a message box to the user
-        vscode.window.showInformationMessage('disposableInjectInAll');
+        // Get target files, taking filepaths to ignore into account.
+        getAllFiles().then(function (targetFiles: any) {
+            for (var i = 0; i < targetFiles.length; i++) {
+                addHeaderLicense(targetFiles[i]);
+            }
+
+            // Display a message box to the user.
+            vscode.window.showInformationMessage(
+                'Successfully Injected Copyright Information in all files.'
+            );
+        });
     });
 
     let disposableInjectInCurrentFile = vscode.commands.registerCommand('copyright.currentFile', () => {
-        vscode.window.showInformationMessage('disposableInjectInCurrentFile');
 
-        const companyInformation: string = vscode.workspace.getConfiguration('copyrightInfo').get('company');
-        const copyrightText: string = vscode.workspace.getConfiguration('copyrightInfo').get('text');
+        const editor = vscode.window.activeTextEditor;
 
-        copyrightText.replace()
+        if (!editor) {
+            vscode.window.showErrorMessage(
+                "No file open!"
+            );
+            return;
+        }
+
+        // Get current file and check if it's supported.
+        var currentFile = editor.document;
+        editor.edit((textEdit) => {
+            textEdit.insert(currentFile.positionAt(0), copyrightText);
+        });
+
+        vscode.window.showInformationMessage('Done.');
     });
 
-    context.subscriptions.push(disposable);
     context.subscriptions.push(disposableInjectInAll);
     context.subscriptions.push(disposableInjectInCurrentFile);
+}
+
+const getAllFiles = () => {
+
+    const ignoreConfig: string | undefined = vscode.workspace.getConfiguration('copyrightInfo').get('ignore');
+
+    const matchFilesPattern: string | undefined = vscode.workspace.getConfiguration('copyrightInfo').get('matchPattern') || '**/*';
+    let folderToBeIgnored = (ignoreConfig || "").split(',').map((term: string) => term.trim());
+    console.log(folderToBeIgnored);
+    if (folderToBeIgnored.length === 1 && folderToBeIgnored[0] === '') {
+        folderToBeIgnored = [];
+    }
+
+    // Get all files in workspace.
+    const defer = new Promise((resolve, reject) => {
+        vscode.workspace.findFiles(matchFilesPattern).then((workspaceFiles) => {
+            const targetFiles = workspaceFiles.filter(isTargetFile(folderToBeIgnored));
+            resolve(targetFiles);
+        });
+    });
+    return defer;
+};
+
+function addHeaderLicense(fileInfo: any) {
+    const companyInformation: any  = vscode.workspace.getConfiguration('copyrightInfo').get('company');
+    const copyrightTextTemplate: any = vscode.workspace.getConfiguration('copyrightInfo').get('text');
+    const copyrightText = getText(companyInformation, copyrightTextTemplate);
+    console.log('>>>>>>>>>>', fileInfo);
+    vscode.workspace.openTextDocument(fileInfo.path).then(
+        function(file: any) {
+            var fileInfo = this;
+            console.log('989989899', file);
+            // Remove extra "/" at beginning of path.
+            var truePath = fileInfo.path.substr(1);
+
+            // Open file, add license, save file.
+            try {
+                var data = fs.readFileSync(truePath, 'utf8').toString();
+                var fd = fs.openSync(truePath, 'wx+');
+                var buffer = new Buffer(copyrightText + data);
+                fs.writeSync(fd, buffer, 0, buffer.length);
+                fs.close(fd, () => {});
+            } catch (error) {
+                console.log('================', error);
+            }
+
+        }.bind(fileInfo)
+    );
 }
 
 // this method is called when your extension is deactivated
