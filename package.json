@@ -61,6 +61,28 @@
             }
         }
     },
+    "badges": [
+        {
+            "url": "https://travis-ci.org/Shobhit1/copyright_injector.svg?branch=master",
+            "description": "Build Status",
+            "href": "https://travis-ci.org/Shobhit1/copyright_injector"
+        },
+        {
+            "url": "https://img.shields.io/github/license/mashape/apistatus.svg",
+            "description": "License",
+            "href": "https://opensource.org/licenses/MIT"
+        },
+        {
+            "url": "https://img.shields.io/vscode-marketplace/v/shobhit1.copyright-injector.svg",
+            "description": "Version",
+            "href": "https://marketplace.visualstudio.com/items?itemName=shobhit1.copyright-injector"
+        },
+        {
+            "url": "https://img.shields.io/vscode-marketplace/d/shobhit1.copyright-injector.svg",
+            "description": "Downloads",
+            "href": "https://marketplace.visualstudio.com/items?itemName=shobhit1.copyright-injector"
+        }
+    ],
     "scripts": {
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -p ./",
