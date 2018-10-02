@@ -38,18 +38,13 @@
                 },
                 "copyrightInfo.ignore": {
                     "type": "string",
-                    "default": "node_modules,bin,coverage,tests,sarif,*.tsx,.vscode",
+                    "default": "node_modules,bin,coverage,tests,sarif,*.tsx,.vscode,public,config",
                     "description": "A comma-delimited string of tokens to ignore in file paths. Files with these tokens in their paths will not be processed."
                 },
                 "copyrightInfo.matchPattern": {
                     "type": "string",
                     "default": "**/*",
                     "description": "A comma-delimited string of tokens to ignore in file paths. Files with these tokens in their paths will not be processed."
-                },
-                "copyrightInfo.text": {
-                    "type": "string",
-                    "default": "// Copyright (c) $company. All rights reserved.\n// Licensed under the MIT license.\n\n",
-                    "description": "Default copyright text to put in your files"
                 }
             }
         }

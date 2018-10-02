@@ -9,16 +9,11 @@ export function activate(context: vscode.ExtensionContext) {
 
     console.log('Congratulations, your extension "copyright-injector" is now active!');
 
-    // get information on what to insert
-    const companyInformation: any  = vscode.workspace.getConfiguration('copyrightInfo').get('company');
-    const copyrightTextTemplate: any = vscode.workspace.getConfiguration('copyrightInfo').get('text');
-    const copyrightText = getText(companyInformation, copyrightTextTemplate);
-
     let disposableInjectInAll = vscode.commands.registerCommand('copyright.injectAllFiles', () => {
         // Get target files, taking filepaths to ignore into account.
         getAllFiles().then(function (targetFiles: any) {
             for (var i = 0; i < targetFiles.length; i++) {
-                addHeaderLicense(targetFiles[i]);
+                addHeaderCopyright(targetFiles[i]);
             }
 
             // Display a message box to the user.
@@ -40,7 +35,17 @@ export function activate(context: vscode.ExtensionContext) {
         }
 
         // Get current file and check if it's supported.
-        var currentFile = editor.document;
+        const currentFile = editor.document;
+        const { languageId } = currentFile;
+
+        const companyInformation: any  = vscode.workspace.getConfiguration('copyrightInfo').get('company');
+        const copyrightText = getText(companyInformation, languageId);
+
+        if (!copyrightText) {
+            vscode.window.showInformationMessage('Unsupported File');
+            return;
+        }
+
         editor.edit((textEdit) => {
             textEdit.insert(currentFile.positionAt(0), copyrightText);
         });
@@ -53,10 +58,9 @@ export function activate(context: vscode.ExtensionContext) {
 }
 
 const getAllFiles = () => {
-
     const ignoreConfig: string | undefined = vscode.workspace.getConfiguration('copyrightInfo').get('ignore');
 
-    const matchFilesPattern: string | undefined = vscode.workspace.getConfiguration('copyrightInfo').get('matchPattern') || '**/*';
+    const matchFilesPattern: string | undefined = vscode.workspace.getConfiguration('copyrightInfo').get('matchPattern') || '/*.txt';
     let folderToBeIgnored = (ignoreConfig || "").split(',').map((term: string) => term.trim());
     console.log(folderToBeIgnored);
     if (folderToBeIgnored.length === 1 && folderToBeIgnored[0] === '') {
@@ -73,32 +77,36 @@ const getAllFiles = () => {
     return defer;
 };
 
-function addHeaderLicense(fileInfo: any) {
-    const companyInformation: any  = vscode.workspace.getConfiguration('copyrightInfo').get('company');
-    const copyrightTextTemplate: any = vscode.workspace.getConfiguration('copyrightInfo').get('text');
-    const copyrightText = getText(companyInformation, copyrightTextTemplate);
-    console.log('>>>>>>>>>>', fileInfo);
+
+const addHeaderCopyright = (fileInfo: any) => {
     vscode.workspace.openTextDocument(fileInfo.path).then(
-        function(file: any) {
-            var fileInfo = this;
-            console.log('989989899', file);
-            // Remove extra "/" at beginning of path.
+        (file: any) => {
+            const { languageId } = file;
+
+            const companyInformation: any  = vscode.workspace.getConfiguration('copyrightInfo').get('company');
+            const copyrightText = getText(companyInformation, languageId);
+
+            console.log(copyrightText);
+            if (!copyrightText) {
+                return;
+            }
+
             var truePath = fileInfo.path.substr(1);
 
             // Open file, add license, save file.
             try {
                 var data = fs.readFileSync(truePath, 'utf8').toString();
-                var fd = fs.openSync(truePath, 'wx+');
+                var fd = fs.openSync(truePath, 'w+');
                 var buffer = new Buffer(copyrightText + data);
                 fs.writeSync(fd, buffer, 0, buffer.length);
-                fs.close(fd, () => {});
+                fs.close(fd, (e) => { console.warn('close', e); });
             } catch (error) {
                 console.log('================', error);
             }
 
-        }.bind(fileInfo)
+        }
     );
-}
+};
 
 // this method is called when your extension is deactivated
 export function deactivate() {

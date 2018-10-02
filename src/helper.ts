@@ -1,10 +1,14 @@
-export const getText = (companyInformation: string, copyrightText: string) => copyrightText.replace('$company', companyInformation);
+const templateObject: { [key: string]: string; }  = {
+    'javascript': '// Copyright (c) $company. All rights reserved.\n// Licensed under the MIT license.\n\n',
+    'html': '<!-- Copyright (c) $company. All rights reserved.\nLicensed under the MIT license. -->\n\n',
+    'typescript': '// Copyright (c) $company. All rights reserved.\n// Licensed under the MIT license.\n\n',
+    'plaintext': '// Copyright (c) $company. All rights reserved.\n// Licensed under the MIT license.\n\n',
+};
 
 // @name isTargetFile
 // @desc Filter function to remove files that user wants to ignore.
 // @param ignoreTokens An array of strings to ignore in filepaths.
 export const isTargetFile = (ignoreTokens: any) => {
-    console.log("-==", ignoreTokens);
     return function(file: any) {
         if (ignoreTokens.length === 0) {
             return true;
@@ -19,3 +23,15 @@ export const isTargetFile = (ignoreTokens: any) => {
         return true;
     };
 };
+
+export const getCopyrightTemplate = (languageId: string) => templateObject[languageId];
+
+export const getText = (companyInformation: string, languageId: string) => {
+    const copyrightTextTemplate: string = getCopyrightTemplate(languageId);
+    if (!copyrightTextTemplate) {
+        return undefined;
+    }
+    return copyrightTextTemplate.replace('$company', companyInformation);
+};
+
+
