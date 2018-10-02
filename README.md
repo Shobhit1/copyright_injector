@@ -1,6 +1,8 @@
 # copyright-injector README
 
 [![Build Status](https://travis-ci.org/Shobhit1/copyright_injector.svg?branch=master)](https://travis-ci.org/Shobhit1/copyright_injector)
+![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
+<!-- ![Visual Studio Marketplace](https://img.shields.io/vscode-marketplace/v/ritwickdey.LiveServer.svg) -->
 
 This is a simple extension based on [license-injector](https://github.com/martellaj/license-injector) which seems to be not active.
 
