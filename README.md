@@ -2,8 +2,8 @@
 
 [![Build Status](https://travis-ci.org/Shobhit1/copyright_injector.svg?branch=master)](https://travis-ci.org/Shobhit1/copyright_injector)
 [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://opensource.org/licenses/MIT)
-[![Visual Studio Marketplace](https://img.shields.io/vscode-marketplace/v/shobhit1.copyright-injector.svg)](https://marketplace.visualstudio.com/items?itemName=shobhit1.copyright-injector)
-[![Visual Studio Marketplace](https://img.shields.io/vscode-marketplace/d/shobhit1.copyright-injector.svg)](https://marketplace.visualstudio.com/items?itemName=shobhit1.copyright-injector)
+<!-- [![Visual Studio Marketplace](https://img.shields.io/vscode-marketplace/v/shobhit1.copyright-injector.svg)](https://marketplace.visualstudio.com/items?itemName=shobhit1.copyright-injector) -->
+<!-- [![Visual Studio Marketplace](https://img.shields.io/vscode-marketplace/d/shobhit1.copyright-injector.svg)](https://marketplace.visualstudio.com/items?itemName=shobhit1.copyright-injector) -->
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
 
 This is a simple extension based on [license-injector](https://github.com/martellaj/license-injector) which seems to be not active.

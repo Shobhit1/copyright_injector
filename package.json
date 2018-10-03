@@ -3,7 +3,8 @@
     "displayName": "Copyright Injector",
     "description": "Injects copyright information on all files. JS and TS",
     "version": "0.0.1",
-    "publisher": "shobhit1",
+    "publisher": "Shobhit",
+    "private": true,
     "license": "MIT",
     "engines": {
         "vscode": "^1.27.0"
