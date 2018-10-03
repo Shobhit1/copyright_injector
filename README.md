@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/Shobhit1/copyright_injector.svg?branch=master)](https://travis-ci.org/Shobhit1/copyright_injector)
 [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://opensource.org/licenses/MIT)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/Shobhit1/copyright_injector/graphs/commit-activity)
 <!-- [![Visual Studio Marketplace](https://img.shields.io/vscode-marketplace/v/shobhit1.copyright-injector.svg)](https://marketplace.visualstudio.com/items?itemName=shobhit1.copyright-injector) -->
 <!-- [![Visual Studio Marketplace](https://img.shields.io/vscode-marketplace/d/shobhit1.copyright-injector.svg)](https://marketplace.visualstudio.com/items?itemName=shobhit1.copyright-injector) -->
 
