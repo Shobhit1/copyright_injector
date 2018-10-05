@@ -14,6 +14,6 @@ steps:
 
 - script: |
     npm install
-    npm test
+    npm test --silent
     npm run vscode:prepublish
-  displayName: 'npm install and build'
+  displayName: 'npm test and build'
