@@ -1,5 +1,6 @@
 # copyright-injector README
 
+[![Build Status](https://dev.azure.com/shobhit01/Copyright%20Injector%20CI/_apis/build/status/Shobhit1.copyright_injector)](https://dev.azure.com/shobhit01/Copyright%20Injector%20CI/_build/latest?definitionId=1)
 [![Build Status](https://travis-ci.org/Shobhit1/copyright_injector.svg?branch=master)](https://travis-ci.org/Shobhit1/copyright_injector)
 [![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://opensource.org/licenses/MIT)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/Shobhit1/copyright_injector/graphs/commit-activity)
