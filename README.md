@@ -59,9 +59,15 @@ Steps:
 
 Please make sure that you have proper configurations entered in the workspace/user settings for this to work. Otherwise the extension will take default values.
 
-## Issues and Enhancements
+## Issues and Suggestions
 
 Please use [GitHub](https://github.com/Shobhit1/copyright_injector) to report issues and also to request enhancements.
+
+## Planned Enhancements
+
+- Check if copyright already exists, then skip the file.
+- Implement extensions' actions when the extension is deactivated.
+- Implement support for more than just ts files.
 
 ## Release Notes
 
