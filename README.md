@@ -68,6 +68,7 @@ Please use [GitHub](https://github.com/Shobhit1/copyright_injector) to report is
 - Check if copyright already exists, then skip the file.
 - Implement extensions' actions when the extension is deactivated.
 - Implement support for more than just ts files.
+- add more unit tests.
 
 ## Release Notes
 
