@@ -1,13 +1,3 @@
----
-name: ''
-about: ''
-title: ''
-labels: Needs Triage
-assignees: ''
-
----
-
-
 #### Pull request checklist
 
 - [ ] Addresses an existing issue: Fixes #0000
