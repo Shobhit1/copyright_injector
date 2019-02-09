@@ -19,5 +19,3 @@ assignees: ''
 (give an overview)
 
 #### Focus areas to test
-
-(optional)
